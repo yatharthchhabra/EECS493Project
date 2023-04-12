@@ -91,15 +91,35 @@ function userCreateEvent() {
         newCapacity = document.getElementById("inputEventMaxPpl").value;
     }
 
-    // Start Sending new event data to index.html
-    sessionStorage.setItem("hasNewEvent", true);
-    sessionStorage.setItem("newTitle", newTitle);
-    sessionStorage.setItem("newType", newType);
-    sessionStorage.setItem("newDescription", newDescription);
-    sessionStorage.setItem("newLocation", newLocation);
-    sessionStorage.setItem("newDate", newDate);
-    sessionStorage.setItem("newTime", newTime);
-    sessionStorage.setItem("newCapacity", newCapacity);   
+    // Store new event in json
+
+    var jsonEntry = new Object();
+    jsonEntry.eventID = newTitle;
+    jsonEntry.title  = newType;
+    jsonEntry.type  = newType;
+    jsonEntry.description  = newType;
+    jsonEntry.maxPeople  = newType;
+    jsonEntry.capacity  = newType;
+    jsonEntry.location  = newType;
+    jsonEntry.date  = newType;
+    jsonEntry.time  = newType;
+    var jsonString= JSON.stringify(jsonEntry);
+    const fs = require("fs");
+
+    // writing the JSON string content to a file
+    fs.writeFile("events.json", data, (error) => {
+    // throwing the error
+    // in case of a writing problem
+    if (error) {
+      // logging the error
+      console.error(error);
+  
+      throw error;
+    }
+  
+    console.log("new event data written succesfully");
+  });
+
 
     window.location.href = "index.html";
 }
