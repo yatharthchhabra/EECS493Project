@@ -12,18 +12,19 @@
     
     }
 
-.filterForm {
+#filterForm {
     position: absolute;
+    display: flex;
     size: 200px;
-    border: 3px solid #f1f1f1;
     width: 380px;
-    height: auto;
+    height: 100%;
     left: 0px;
-    top:290px;
+    top:0px;
     text-align: center;
     padding: 10px;
     border-radius: 5px;
-    background: white;
+    background: #f1f1f0;
+    z-index: 12;
 }
 
 .content-box {

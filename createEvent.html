@@ -2,17 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <script src='createEvent.js'></script>
         <link rel="stylesheet" href="eventList.css">
-        <link rel="stylesheet" href="filter_event.css">
         <link rel="stylesheet" href="create_event.css">
     </head>
     <body>
         <div class="header">
             <text style="font-size: xxx-large">Project_Name</text>
             <div class="navBar">
-                <text id="navOption_Border">HOME</text>
-                <text id="navOption">My Event</text>
-                <text id="navOption">Settings</text>
+                <text class="navOption_Border">HOME</text>
+                <text class="navOption" id = "myEvent" onclick="navToMyEvent()">My Event</text>
                 <text id="logIn">Log In</text>
             </div>
 
@@ -26,19 +25,39 @@
                 <div class="createContainerElements">
                     <div class="elements">Event Name - </div>
                     <div>
-                        <input type = "text" class="inputBox" placeholder="Name">
+                        <input type = "text" class="inputBox" placeholder="Name" id="inputEventName">
                     </div>
                 </div>
             </div>
             <div class="createContainer">
-                <textarea class="description-box" rows="4" cols="50">Add a short description of your event....</textarea>
+                <div class="createContainerElements">
+                    <div class="elements">Select Event Type - </div>
+                    <div>
+                        <select class="selectBox" id="inputEventType">
+                            <option value="">--Default--</option>
+                            <option>Football</option>
+                            <option>Basketball</option>
+                            <option>Hockey</option>
+                            <option>Badminton</option>
+                            <option>Cricket</option>
+                            <option>Fitness</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="createContainer">
+                <div class="createContainerElements">
+                    <div class="elements">Event Description - </div>
+                </div>
+                <textarea class="description-box" rows="4" cols="50" style="margin-top:12px"  id="inputEventDes">Add a short description of your event....</textarea>
             </div>
             
             <div class="createContainer">
                 <div class="createContainerElements">
-                    <div class="elements">Enter Location - </div>
+                    <div class="elements">Event Location - </div>
                     <div>
-                        <input type = "text" class="inputBox" placeholder="Address">
+                        <input type = "text" class="inputBox" placeholder="Address" id="inputEventAddress">
                     </div>
                 </div>
             </div>
@@ -46,7 +65,21 @@
                 <div class="createContainerElements">
                     <div class="elements">Date - </div>
                     <div>
-                        <input type = "date" class="inputBox" placeholder="Address">
+                        <input type = "date" class="inputBox" placeholder="Address" id="inputEventDate">
+                    </div>
+                </div>
+            </div>
+            <div class="createContainer">
+                <div class="createContainerElements">
+                    <div class="elements">Starting Time - </div>
+                    <div>
+                        <input type="time" class="inputBox" placeholder="Address" id="inputEventStartTime">
+                    </div>
+                </div>
+                <div class="createContainerElements">
+                    <div class="elements">Ending Time - </div>
+                    <div>
+                        <input type="time" class="inputBox" placeholder="Address" id="inputEventEndTime">
                     </div>
                 </div>
             </div>
@@ -54,11 +87,12 @@
                 <div class="createContainerElements">
                     <div class="elements">Max People - </div>
                     <div>
-                        <input type="number" class="inputBox" min="0" max="30" placeholder="10">
+                        <input type="number" class="inputBox" min="0" max="30" placeholder="10" id="inputEventMaxPpl">
                     </div>
                 </div>
             </div>
-            <button class="createButton"> Create Event</button>
+            <div class="createButton" style="margin-bottom: 18px; margin-top: 18px" onclick="userCreateEvent()"> Create Event</div>
+            <a href="index.html">Cancel</a>
         </div>
     </body>
 </html>
