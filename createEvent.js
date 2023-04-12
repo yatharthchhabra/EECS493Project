@@ -107,7 +107,7 @@ function userCreateEvent() {
     const fs = require("fs");
 
     // writing the JSON string content to a file
-    fs.writeFile("events.json", data, (error) => {
+    fs.writeFile("events.json", jsonString, (error) => {
     // throwing the error
     // in case of a writing problem
     if (error) {
