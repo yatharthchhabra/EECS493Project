@@ -1,4 +1,7 @@
 //Event Script
+var url = "http://localhost:8080/";
+let data;
+
 
 //Global Variables
 let isLogIn = true;
@@ -23,10 +26,16 @@ let blue = "#d9eafa";
 // Global Listener
 
 window.onload = function() {
-    console.log('Webpage loaded!');
-
+    
+    
     // index.html
     if(window.location.href.match('index.html') != null){
+        fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+        data = json;
+        console.log('Webpage loaded!');
         initialEvent();
         if(sessionStorage.getItem("newTitle") !== null){
             // Append new Event
@@ -34,6 +43,8 @@ window.onload = function() {
         }
         //load all event
         loadEvent();
+    });
+        
     }
     
 };
@@ -49,56 +60,28 @@ window.addEventListener('scroll', function(event) {
 // User Function 
 
 function initialEvent() {
-    var event_1 = {
-        title: "Basketball 3V3",
-        type: "Basketball",
-        date: "03-14",
-        time: "1:00~3:00pm",
-        location: "ARC",
-        capacity: "4/6 Full",
-        index: 0,
-        description: "None"
-    };
-    var event_2 = {
-        title: "Tennis",
-        type: "Tennis",
-        date: "03-14",
-        time: "2:00~3:30pm",
-        location: "ARC",
-        capacity: "1/4 Full",
-        index: 1,
-        description: "None"
-    };
-    var event_3 = {
-        title: "Football",
-        type: "Football",
-        date: "03-14",
-        time: "3:00~5:00pm",
-        location: "ARC",
-        capacity: "4/10 Full",
-        index : 2,
-        description: "None"
-    };
-    var event_4 = {
-        title: "Zumba",
-        type: "Fitness",
-        date: "03-14",
-        time: "8:00~9:30pm",
-        location: "Intramural",
-        capacity: "9/10 Full",
-        index: 3,
-        description: "None"
-    };
-    eventList.push(event_1);
-    eventList.push(event_2);
-    eventList.push(event_3);
-    eventList.push(event_4);
+    for (let i = 0; i < data.length; i++) {
+        let event = data[i];
+        var tmp_event = {
+            title: event.title,
+            type: event.type,
+            date: event.description,
+            time: event.time,
+            location: event.location,
+            capacity: event.capacity,
+            index: 0,
+            description: event.description
+        };
+        eventList.push(tmp_event);
+    }
 }
 
 function loadEvent() {
     for(var i in eventList) {
         appendEvent(eventList[i]);
     }
+    
+    console.log(document.cookie)
 }
 
 function loadCreatedEvent() {
