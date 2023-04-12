@@ -1,0 +1,16 @@
+[
+    {
+    "eventID": "e1",
+    "eventName":"Test",
+    "eventType":"Football",
+    "eventDiscription":"Some info about event",
+    "creator": {"user":"user1","name":"Josh","email":"josh123@mail.com","number":"823523582323","zipcode":"48104"},
+    "people":[{"user":"user1","name":"Josh","email":"josh123@mail.com","number":"823523582323","zipcode":"48104"}, 
+              {"user":"user2","name":"Emily","email":"em123@mail.com","number":"86346363223","zipcode":"48104"}],
+    "maxPeople":"10",
+    "eventLocation":"Diag",
+    "Date":"05-12-2023",
+    "startTime": "17:00",
+    "endTime": "19:00"
+    }
+]
