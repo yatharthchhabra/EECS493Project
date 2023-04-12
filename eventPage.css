@@ -229,3 +229,46 @@
 	border: 1px solid #F0F0F0;
 	font-size: 8px;
 }
+
+.eventPageContainer {
+    width: 100%;
+    height: auto;
+    display : flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+}
+
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 10px;
+}
+
+.createButton {
+    /* usual styles */
+    bottom: 40px;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border:none;
+    background-color:#455deb;
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    width:auto;
+    font-size:large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.createButton:hover {
+    border: 1px solid #aaa;
+}
