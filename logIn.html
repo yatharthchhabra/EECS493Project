@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='event.js'></script>
+        <link rel="stylesheet" href="logIn.css">
+    </head>
+    <body>
+        <div class="header">
+            <text style="font-size: x-large">Project_Name</text>
+
+        </div>
+        <div class="subBody">
+            <text class = "signInTitle" style="font-size: xx-large">Sign In</text>
+            <input type="text" placeholder="Email" class="signInInput">
+            <div class="signInInput">
+                <input type="password" placeholder="Password" class="signInPassWord" id="logInPasswordInput">
+                <button onclick="changePasswordVisibility()" style="border:none; font-size: large"> show </button>
+            </div>
+            <div class="signInPageButton" onclick = "signInButton()">Sign In</div>
+        </div>
+    </body>
+</html>

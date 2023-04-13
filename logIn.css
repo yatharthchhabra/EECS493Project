@@ -1,0 +1,74 @@
+.header {
+    width: auto;
+    height: 150px;
+    display : flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 30px;
+    color: #000080;
+    position: sticky; top: 0;
+    border: 300;
+}
+
+text{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subBody{
+    width: 100%;
+    height:auto;
+    display: flex;
+    /* background-color: bisque; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signInTitle {
+    width: 34%;
+    margin-left: 32%;
+    margin-right: 34%;
+    align-items:baseline;
+    margin-bottom: 10px;
+}
+
+.signInInput {  
+    /* still need border-color; might be only border-bottom as dotted */
+    width: 300px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signInInput:focus {
+    outline: none;
+}
+
+.signInPassWord{
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+.signInPassWord:focus {
+    outline: none;
+}
+
+.signInPageButton {
+    width: 240px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: blue;
+    color:white;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -43,6 +43,12 @@ window.onload = function() {
         }
         //load all event
         loadEvent();
+
+        //check LogIn
+        // Still need implementation
+        if(sessionStorage.getItem("isLogedIn")) {
+            console.log("logged in");
+        }
     });
         
     }
@@ -289,3 +295,33 @@ function deselectFilterIcon(event) {
     filterEvent();
 }
 
+function changePasswordVisibility() {
+    console.log(document.getElementById("logInPasswordInput").value);
+    if(document.getElementById("logInPasswordInput").value.length > 0){
+        if(document.getElementById("logInPasswordInput").type == "password"){
+            document.getElementById("logInPasswordInput").type = "text";
+        } else {
+            document.getElementById("logInPasswordInput").type = "password";
+        }
+    }
+}
+
+function navToLogIn() {
+    window.location.href = "logIn.html";
+}
+
+function signInButton() {
+    if(verifyLogIn()) {
+        window.location.href = "index.html";
+        sessionStorage.setItem("isLogedIn", true);
+    } else {
+        alert("Wrong Email or Password !");
+    }
+    
+}
+
+function verifyLogIn() {
+    // this function is to check if the email and password is correct
+    // hardcode it for now
+    return true;
+}
