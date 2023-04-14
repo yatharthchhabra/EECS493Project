@@ -1,17 +1,26 @@
 // eventPage javaScript
-let eventList = [];
+var url = "http://localhost:8080/";
+// let data;
+let eventList;
 
 
 window.onload = function() {
     console.log('event Page loaded!');
 
-    //HardCode event List for now
-    initialEvent();
+    fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+        eventList = json;
+        console.log(eventList);
+        console.log('Event Page loaded!');
+
+        //update the event information
+        loadEventInfo(eventList[id]);
+    });
 
     var id = sessionStorage.getItem("learnMoreId");
     console.log("onclick event id = " + id);
-    //update the event information
-    loadEventInfo(eventList[id]);
 
 };
 
@@ -75,6 +84,7 @@ function navToMyEvent() {
 }
 
 function loadEventInfo(event) {
+    console.log("onclick event = " + event);
     console.log("load event info for event = " + event.index);
 
     document.getElementById("eventTITLE").innerHTML = event.title;

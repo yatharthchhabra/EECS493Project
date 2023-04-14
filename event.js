@@ -32,6 +32,7 @@ window.onload = function() {
     if(window.location.href.match('index.html') != null){
         if(!sessionStorage.getItem("isLogedIn")) {
             window.location.href = "logIn.html";
+            console.log("Not log in yet!");
         }
         else {
             fetch(url)
@@ -41,19 +42,19 @@ window.onload = function() {
                 data = json;
                 console.log('Webpage loaded!');
                 initialEvent();
-                if(sessionStorage.getItem("newTitle") !== null){
-                    // Append new Event
-                    loadCreatedEvent();
-                }
+                // if(sessionStorage.getItem("newTitle") !== null){
+                //     // Append new Event
+                //     loadCreatedEvent();
+                // }
                 //load all event
                 loadEvent();
                 document.getElementById("welcomeName").innerText = "Hi, " + sessionStorage.getItem("username");
                 
-                //check LogIn
-                // Still need implementation
-                if(sessionStorage.getItem("isLogedIn")) {
-                    console.log("logged in");
-                }
+                // //check LogIn
+                // // Still need implementation
+                // if(sessionStorage.getItem("isLogedIn")) {
+                //     console.log("logged in");
+                // }
             });
                 
          }
@@ -82,10 +83,11 @@ function initialEvent() {
             time: event.time,
             location: event.location,
             capacity: event.capacity,
-            index: 0,
+            index: eventCnt,
             description: event.description
         };
         eventList.push(tmp_event);
+        eventCnt++;
     }
 }
 
@@ -97,28 +99,28 @@ function loadEvent() {
     console.log(document.cookie)
 }
 
-function loadCreatedEvent() {
-    console.log("Prepare to create new Event");
-    // var newTitle = sessionStorage.getItem("newTitle");
-    // var newType = sessionStorage.getItem("newType");
-    // var newDescription = sessionStorage.getItem("newDescription");
-    // var newLocation = sessionStorage.getItem("newLocation");
-    // var newDate = sessionStorage.getItem("newDate");
-    // var newTime = sessionStorage.getItem("newTime");
-    // var newCapacity = sessionStorage.getItem("newCapacity");   
-    var newEVENT = {
-        title: sessionStorage.getItem("newTitle"),
-        type: sessionStorage.getItem("newType"),
-        date: sessionStorage.getItem("newDate"),
-        time: sessionStorage.getItem("newTime"),
-        location: sessionStorage.getItem("newLocation"),
-        capacity: "1/" + sessionStorage.getItem("newCapacity") + " Full",
-        index: eventCnt,
-        description: sessionStorage.getItem("newDescription")
-    }
-    eventList.push(newEVENT);
-    eventCnt++;
-}
+// function loadCreatedEvent() {
+//     console.log("Prepare to create new Event");
+//     // var newTitle = sessionStorage.getItem("newTitle");
+//     // var newType = sessionStorage.getItem("newType");
+//     // var newDescription = sessionStorage.getItem("newDescription");
+//     // var newLocation = sessionStorage.getItem("newLocation");
+//     // var newDate = sessionStorage.getItem("newDate");
+//     // var newTime = sessionStorage.getItem("newTime");
+//     // var newCapacity = sessionStorage.getItem("newCapacity");   
+//     var newEVENT = {
+//         title: sessionStorage.getItem("newTitle"),
+//         type: sessionStorage.getItem("newType"),
+//         date: sessionStorage.getItem("newDate"),
+//         time: sessionStorage.getItem("newTime"),
+//         location: sessionStorage.getItem("newLocation"),
+//         capacity: "1/" + sessionStorage.getItem("newCapacity") + " Full",
+//         index: eventCnt,
+//         description: sessionStorage.getItem("newDescription")
+//     }
+//     eventList.push(newEVENT);
+//     eventCnt++;
+// }
 
 function appendEvent(event) {
     console.log("Add Event " + eventCnt);
@@ -171,6 +173,9 @@ function appendEvent(event) {
     learnMore.style.fontSize = "20px";
     learnMore.href = "eventPage.html";
     learnMore.innerHTML = "<u>Learn More</u>";
+    learnMore.onclick = function() {
+        storeLearnMoreIdx(event.index);
+    };
 
 
     //Start appending in order
@@ -185,6 +190,10 @@ function appendEvent(event) {
     container.appendChild(eventBlock);
 
     eventCnt++;
+}
+
+function storeLearnMoreIdx(idx) {
+    sessionStorage.setItem("learnMoreId", idx);
 }
 
 function navToMyEvent() {

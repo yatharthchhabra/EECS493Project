@@ -1,6 +1,6 @@
 [
     {
-    "eventID": 0,
+    "index": 0,
     "title":"Test event",
     "type":"Football",
     "description":"Some info about event",
@@ -11,7 +11,7 @@
     "time":"1:00~3:00pm"
     },
     {
-        "eventID": 1,
+        "index": 1,
         "title": "Tennis",
         "type": "Tennis",
         "date": "03-14",
