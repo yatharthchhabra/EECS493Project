@@ -18,6 +18,16 @@ app.get("/", (req,res) => {
     
 });
 
+app.get("/users", (req,res) => {
+    var filePath = "./data/users.json";
+    var data = "";
+    fs.readFile(filePath, function (error, content) {
+        data = JSON.parse(content);
+        console.log(data);
+        res.json(data);
+    });
+});
+
 app.listen(8080, () => {
     console.log("listening on port 8080");
 })

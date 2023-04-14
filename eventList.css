@@ -46,6 +46,28 @@ a{
     margin-right: 30px;
 }
 
+.navRight {
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-right: 50px;
+    position: absolute;
+    right: 170px;
+
+}
+
+.navIcon {
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: absolute;
+    right: 160px;
+
+
+}
+
 #logIn {
     padding-left: 26px;
     padding-right: 26px;

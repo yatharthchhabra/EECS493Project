@@ -30,29 +30,36 @@ window.onload = function() {
     
     // index.html
     if(window.location.href.match('index.html') != null){
-        fetch(url)
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-        data = json;
-        console.log('Webpage loaded!');
-        initialEvent();
-        if(sessionStorage.getItem("newTitle") !== null){
-            // Append new Event
-            loadCreatedEvent();
+        if(!sessionStorage.getItem("isLogedIn")) {
+            window.location.href = "logIn.html";
         }
-        //load all event
-        loadEvent();
+        else {
+            fetch(url)
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json);
+                data = json;
+                console.log('Webpage loaded!');
+                initialEvent();
+                if(sessionStorage.getItem("newTitle") !== null){
+                    // Append new Event
+                    loadCreatedEvent();
+                }
+                //load all event
+                loadEvent();
+                document.getElementById("welcomeName").innerText = "Hi, " + sessionStorage.getItem("username");
+                
+                //check LogIn
+                // Still need implementation
+                if(sessionStorage.getItem("isLogedIn")) {
+                    console.log("logged in");
+                }
+            });
+                
+         }
 
-        //check LogIn
-        // Still need implementation
-        if(sessionStorage.getItem("isLogedIn")) {
-            console.log("logged in");
         }
-    });
-        
-    }
-    
+          
 };
 
 window.addEventListener('scroll', function(event) {
@@ -307,11 +314,16 @@ function changePasswordVisibility() {
 }
 
 function navToLogIn() {
+    sessionStorage.setItem("isLoggedIn", false);
+    sessionStorage.setItem("username", "");
     window.location.href = "logIn.html";
 }
 
-function signInButton() {
-    if(verifyLogIn()) {
+async function signInButton() {
+    var email = document.getElementById("loginName").value;
+    var pass = document.getElementById("logInPasswordInput").value;
+    const verify = await verifyLogIn(email,pass);
+    if(verify) {
         window.location.href = "index.html";
         sessionStorage.setItem("isLogedIn", true);
     } else {
@@ -320,8 +332,38 @@ function signInButton() {
     
 }
 
-function verifyLogIn() {
+async function verifyLogIn(email, pass) {
     // this function is to check if the email and password is correct
     // hardcode it for now
-    return true;
+    user_url = "http://localhost:8080/users";
+    return fetch(user_url)
+    .then((response) => response.json())
+    .then((json) => {
+        console.log(json);
+        data = json;
+        var userFound = false;
+        var name = "";
+
+        for (var i=0; i < data.length; ++i) {
+            var usr = data[i];
+            console.log(typeof usr.email);
+            console.log(typeof email)
+            console.log(typeof pass)
+            console.log(usr.password);
+            if ((usr.email === email) && (usr.password === pass)) {
+                userFound = true;
+                console.log("bruh")
+                name = usr.name;
+                break;
+            }
+        }
+
+        if (userFound) {
+            sessionStorage.setItem("isLoggedIn", true);
+            sessionStorage.setItem("username", name);
+            return true;
+        }
+        return false;
+    });
+    
 }
