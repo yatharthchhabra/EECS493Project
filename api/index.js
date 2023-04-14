@@ -28,6 +28,29 @@ app.get("/users", (req,res) => {
     });
 });
 
+app.get("/create", (req, res) => {
+
+    var filePath = "./data/users.json";
+    var obj = new Object();
+    obj.name = req.query.name;
+    obj.email = req.query.email;
+    obj.password = req.query.password;
+    obj.zipcode = req.query.zipcode;
+    var newEntry = JSON.stringify(obj);
+    console.log(newEntry);
+    fs.readFile(filePath, function (err, data) {
+        var json = JSON.parse(data)
+        json.push(JSON.parse(newEntry))
+    
+        fs.writeFile(filePath, JSON.stringify(json), function(err, result) {
+            if(err) console.log('error', err);
+          });
+    });
+    res.send("Created")
+
+
+});
+
 app.listen(8080, () => {
     console.log("listening on port 8080");
 })

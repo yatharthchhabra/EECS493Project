@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='createAccount.js'></script>
+        <link rel="stylesheet" href="logIn.css">
+    </head>
+    <body>
+        <div class="header">
+            <text style="font-size: x-large">Project_Name</text>
+
+        </div>
+        <div class="subBody">
+            <text class = "signInTitle" style="font-size: xx-large">Create An Account</text>
+            <input type="text" id="name" placeholder="Enter Name" type="text" class="signInInput" required>
+            <input type="text" type="email" id="email" placeholder="Email" class="signInInput" required>
+            <input type="text" type="number" id="zipcode" placeholder="Enter zipcode" class="signInInput" required>
+            <div class="signInInput">
+                <input type="password" placeholder="Password" class="signInPassWord" id="logInPasswordInput" required>
+                <button onclick="changePasswordVisibility()" style="border:none; font-size: large"> show </button>
+            </div>
+            <div class="signInPageButton" onclick="createAccountButton()">Create Account</div>
+            <div>Already have an account? <a href="logIn.html">Sign In</a></div>
+        </div>
+    </body>
+</html>

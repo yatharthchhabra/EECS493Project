@@ -1,4 +1,1 @@
-[
-    {"user":"user1","name":"Josh","email":"josh123@gmail.com","number":"8235235823","zipcode":"48104", "password": "joshTheGreat"},
-    {"user":"user2","name":"Emily","email":"em123@mail.com","number":"86346363223","zipcode":"48104", "password": "emily1234"}
-]
+[{"name":"Josh","email":"josh123@gmail.com","zipcode":"48104","password":"joshTheGreat"},{"name":"Emily","email":"em123@mail.com","zipcode":"48104","password":"emily1234"},{"name":"Kannan Shilen","email":"kshilen@umich.edu","password":"kannan1234","zipcode":"48104"}]

@@ -319,6 +319,16 @@ function navToLogIn() {
     window.location.href = "logIn.html";
 }
 
+
+function searchButton() {
+
+    var txt = document.getElementById('searchBar').value;
+    
+    for (var i = 0; i < eventList.length; ++i) {
+
+    }
+}
+
 async function signInButton() {
     var email = document.getElementById("loginName").value;
     var pass = document.getElementById("logInPasswordInput").value;
