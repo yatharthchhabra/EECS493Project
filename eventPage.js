@@ -97,7 +97,7 @@ function loadEventInfo(event) {
 
 function navToHOME() {
     console.log("click back button!");
-    // window.location.href = "index.html";
+    window.location.href = "index.html";
 
 }
 
