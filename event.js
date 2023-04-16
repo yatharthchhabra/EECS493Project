@@ -379,11 +379,25 @@ function navToLogIn() {
 
 function searchButton() {
 
-    var txt = document.getElementById('searchBar').value;
-    
-    for (var i = 0; i < eventList.length; ++i) {
-
+    var txt = document.getElementById('searchBar').value.toLowerCase();
+    if (!txt) {
+        for (var i = 0; i < eventList.length; ++i) {
+            var event = document.getElementById("event_" + eventList[i].index);
+            event.style.display = "flex";
+        }
     }
+    else {
+        for (var i = 0; i < eventList.length; ++i) {
+            var event = document.getElementById("event_" + eventList[i].index);
+            if (!eventList[i].title.toLowerCase().match(txt)) {
+                event.style.display = "none";
+            }
+            else {
+                event.style.display = "flex";
+            }
+        }
+    }
+    
 }
 
 async function signInButton() {
