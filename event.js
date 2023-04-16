@@ -57,7 +57,7 @@ window.onload = function() {
                 // }
             });
                 
-         }
+        }
 
         }
           
@@ -79,7 +79,7 @@ function initialEvent() {
         var tmp_event = {
             title: event.title,
             type: event.type,
-            date: event.description,
+            date: event.date,
             time: event.time,
             location: event.location,
             capacity: event.capacity,
@@ -92,8 +92,11 @@ function initialEvent() {
 }
 
 function loadEvent() {
+    var cntTemp = 0;
     for(var i in eventList) {
+        eventList[i].index = cntTemp;
         appendEvent(eventList[i]);
+        cntTemp++;
     }
     
     console.log(document.cookie)
@@ -149,7 +152,7 @@ function appendEvent(event) {
     eventTitle.className = 'eventTextLeft';
     eventTitle.innerHTML = '<b>' + event.title + '</b>';
 
-    // 4. ower eventRow
+    // 4. lower eventRow
     var lowerEventRow = document.createElement('div');
     lowerEventRow.className = 'eventRow';
     // 4.1 The location Icon -- hardcode
@@ -165,7 +168,7 @@ function appendEvent(event) {
     //<text class="eventTextMiddle">4/6 Full</text>
     var capText = document.createElement('text');
     capText.className = 'eventTextMiddle';
-    capText.innerHTML = event.capacity;
+    capText.innerHTML = event.capacity + " people";
     // 4.4 Learn more -- hardcode
     var learnMore = document.createElement('a');
     learnMore.className = 'eventTextRight';

@@ -22,54 +22,56 @@ window.onload = function() {
     var id = sessionStorage.getItem("learnMoreId");
     console.log("onclick event id = " + id);
 
+    document.getElementById("welcomeName").innerText = "Hi, " + sessionStorage.getItem("username");
+
 };
 
-function initialEvent() {
-    var event_1 = {
-        title: "Basketball 3V3",
-        type: "Basketball",
-        date: "03-14",
-        time: "1:00~3:00pm",
-        location: "ARC",
-        capacity: "4/6 Full",
-        index: 0,
-        description: "None"
-    };
-    var event_2 = {
-        title: "Tennis",
-        type: "Tennis",
-        date: "03-14",
-        time: "2:00~3:30pm",
-        location: "ARC",
-        capacity: "1/4 Full",
-        index: 1,
-        description: "None"
-    };
-    var event_3 = {
-        title: "Football",
-        type: "Football",
-        date: "03-14",
-        time: "3:00~5:00pm",
-        location: "ARC",
-        capacity: "4/10 Full",
-        index : 2,
-        description: "None"
-    };
-    var event_4 = {
-        title: "Zumba",
-        type: "Fitness",
-        date: "03-14",
-        time: "8:00~9:30pm",
-        location: "Intramural",
-        capacity: "9/10 Full",
-        index: 3,
-        description: "None"
-    };
-    eventList.push(event_1);
-    eventList.push(event_2);
-    eventList.push(event_3);
-    eventList.push(event_4);
-}
+// function initialEvent() {
+//     var event_1 = {
+//         title: "Basketball 3V3",
+//         type: "Basketball",
+//         date: "03-14",
+//         time: "1:00~3:00pm",
+//         location: "ARC",
+//         capacity: "4/6 Full",
+//         index: 0,
+//         description: "None"
+//     };
+//     var event_2 = {
+//         title: "Tennis",
+//         type: "Tennis",
+//         date: "03-14",
+//         time: "2:00~3:30pm",
+//         location: "ARC",
+//         capacity: "1/4 Full",
+//         index: 1,
+//         description: "None"
+//     };
+//     var event_3 = {
+//         title: "Football",
+//         type: "Football",
+//         date: "03-14",
+//         time: "3:00~5:00pm",
+//         location: "ARC",
+//         capacity: "4/10 Full",
+//         index : 2,
+//         description: "None"
+//     };
+//     var event_4 = {
+//         title: "Zumba",
+//         type: "Fitness",
+//         date: "03-14",
+//         time: "8:00~9:30pm",
+//         location: "Intramural",
+//         capacity: "9/10 Full",
+//         index: 3,
+//         description: "None"
+//     };
+//     eventList.push(event_1);
+//     eventList.push(event_2);
+//     eventList.push(event_3);
+//     eventList.push(event_4);
+// }
 
 function navToMyEvent() {
     // document.getElementById("myEvent").style.borderColor = "white";
@@ -85,7 +87,6 @@ function navToMyEvent() {
 
 function loadEventInfo(event) {
     console.log("onclick event = " + event);
-    console.log("load event info for event = " + event.index);
 
     document.getElementById("eventTITLE").innerHTML = event.title;
     document.getElementById("eventCAP").innerHTML = event.capacity;
@@ -96,7 +97,7 @@ function loadEventInfo(event) {
 
 function navToHOME() {
     console.log("click back button!");
-    window.location.href = "index.html";
+    // window.location.href = "index.html";
 
 }
 

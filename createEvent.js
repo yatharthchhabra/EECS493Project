@@ -94,34 +94,41 @@ function userCreateEvent() {
     // Store new event in json
 
     var jsonEntry = new Object();
-    jsonEntry.eventID = newTitle;
-    jsonEntry.title  = newType;
+    jsonEntry.title  = newTitle;
     jsonEntry.type  = newType;
-    jsonEntry.description  = newType;
-    jsonEntry.maxPeople  = newType;
-    jsonEntry.capacity  = newType;
-    jsonEntry.location  = newType;
-    jsonEntry.date  = newType;
-    jsonEntry.time  = newType;
+    jsonEntry.description  = newDescription;
+    jsonEntry.capacity  = newCapacity;
+    jsonEntry.location  = newLocation;
+    jsonEntry.date  = newDate;
+    jsonEntry.time  = newTime;
     var jsonString= JSON.stringify(jsonEntry);
-    const fs = require("fs");
 
-    // writing the JSON string content to a file
-    fs.writeFile("events.json", jsonString, (error) => {
-    // throwing the error
-    // in case of a writing problem
-    if (error) {
-      // logging the error
-      console.error(error);
+    var tempCapacity = "1/" + newCapacity;
+    console.log(newTitle);
+
+    //change the url here to create new event!!!
+    var url = "http://localhost:8080/newE?" + "index=" + 0 + "&title=" + newTitle + "&type=" + newType + "&description=" + newDescription + "&maxPeople=" + newCapacity + "&capacity=" + tempCapacity + "&location=" + newLocation + "&date=" + newDate + "&time=" + newTime;
+    console.log(url);
+    fetch(url).then((response) => {
+        console.log("Request to append new event to json");
+        window.location.href = "index.html";
+    });
+    
+    // const fs = require("fs");
+    // // writing the JSON string content to a file
+    // fs.writeFile("events.json", jsonString, (error) => {
+    // // throwing the error
+    // // in case of a writing problem
+    // if (error) {
+    //   // logging the error
+    //   console.error(error);
   
-      throw error;
-    }
+    //   throw error;
+    // }
   
-    console.log("new event data written succesfully");
-  });
+    // console.log("new event data written succesfully");
+    // });
 
-
-    window.location.href = "index.html";
 }
 
 function getTimefromStr(str1, str2) {
