@@ -9,6 +9,10 @@ window.onload = function() {
     console.log(eventCnt);
 };
 
+function navToMyEvent() {
+    window.location.href = "myEvents.html";
+}
+
 
 
 function userCreateEvent() {

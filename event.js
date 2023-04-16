@@ -18,6 +18,16 @@ let sportsFilter = {
     Fitness: false
 };
 
+let selectedFilter = {
+    numFilter: 0,
+    Football: false,
+    Basketball: false,
+    Hockey: false,
+    Badminton: false,
+    Cricket: false,
+    Fitness: false
+};
+
 
 let green = "#ebfcdb";
 let blue = "#d9eafa";
@@ -60,7 +70,7 @@ window.onload = function() {
                 
         }
 
-        }
+    }
           
 };
 
@@ -311,9 +321,10 @@ function satisfyCapRange(maxPeople, value) {
 
 function updateFilterHeader() {
     for(var i in sportsFilter) {
-        if(i != "numFilter" && sportsFilter[i]) {
+        if(i != "numFilter" && sportsFilter[i] && !selectedFilter[i]) {
             //add it to the filter header
             //<div class="filterButton" id = "FootballFilterButton" onclick="changeSportsFilterElt('Football')"> Football</div>
+            selectedFilter[i] = true;
             var filterButton = document.createElement('div');
             filterButton.className = 'filterButton_header';
             filterButton.id = "filterButton_" + i;
@@ -339,6 +350,7 @@ function deselectFilterIcon(event) {
     var sportName = idTmp.substring(11, idTmp.length);
     console.log(sportName);
     sportsFilter[sportName] = false;
+    selectedFilter[sportName] = false;
     sportsFilter["numFilter"]--;
     var removeFilter = document.getElementById("filterButton_"+sportName);
     removeFilter.remove();
@@ -398,6 +410,7 @@ async function verifyLogIn(email, pass) {
         data = json;
         var userFound = false;
         var name = "";
+        var idx = -1;
 
         for (var i=0; i < data.length; ++i) {
             var usr = data[i];
@@ -409,6 +422,7 @@ async function verifyLogIn(email, pass) {
                 userFound = true;
                 console.log("bruh")
                 name = usr.name;
+                idx = i;
                 break;
             }
         }
@@ -416,6 +430,7 @@ async function verifyLogIn(email, pass) {
         if (userFound) {
             sessionStorage.setItem("isLoggedIn", true);
             sessionStorage.setItem("username", name);
+            sessionStorage.setItem("userIndex", idx);
             return true;
         }
         return false;

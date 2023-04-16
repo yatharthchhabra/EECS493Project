@@ -60,7 +60,7 @@ async function createAccountButton() {
         alert("User with this email already exists!");
         return false;
     }
-    var url = "http://localhost:8080/create?" + "name=" + name + "&email=" + email + "&password=" + password + "&zipcode=" + zipcode;
+    var url = "http://localhost:8080/create?" + "name=" + name + "&email=" + email + "&password=" + password + "&zipcode=" + zipcode
     console.log(url);
     fetch(url).then((response) => {
         console.log("created account");
