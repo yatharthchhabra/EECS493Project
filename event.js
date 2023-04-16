@@ -18,6 +18,7 @@ let sportsFilter = {
     Fitness: false
 };
 
+
 let green = "#ebfcdb";
 let blue = "#d9eafa";
 
@@ -84,7 +85,8 @@ function initialEvent() {
             location: event.location,
             capacity: event.capacity,
             index: eventCnt,
-            description: event.description
+            description: event.description,
+            maxPeople: event.maxPeople
         };
         eventList.push(tmp_event);
         eventCnt++;
@@ -258,13 +260,14 @@ function changeSportsFilterElt(sportName) {
 }
 
 function filterEvent() {
+    //Sports type filter
     if(sportsFilter["numFilter"] == 0) {
         for(var i in eventList){
             var event = document.getElementById("event_" + eventList[i].index);
             event.style.display = "flex";
         }
     } else {
-         for(var i in eventList){
+        for(var i in eventList){
             var event = document.getElementById("event_" + eventList[i].index);
             if(eventList[i].type == "other" || !sportsFilter[eventList[i].type]) {
                 event.style.display = "none";
@@ -273,6 +276,36 @@ function filterEvent() {
                 event.style.display = "flex";
             }
         }
+    }
+
+    //Capacity Filter
+    if(document.getElementById("capFilter").value.length > 0) {
+        var filterValue = document.getElementById("capFilter").value;
+        console.log(filterValue);
+        // Select a capacity filter
+        for(i in eventList) {
+            console.log("Max people = " + eventList[i].maxPeople);
+            if(!satisfyCapRange(eventList[i].maxPeople, filterValue)) {
+                var event = document.getElementById("event_" + eventList[i].index);
+                event.style.display = "none";
+            }
+        }
+
+    }
+}
+
+function satisfyCapRange(maxPeople, value) {
+    if(value == "0-5") {
+        return maxPeople >= 0 && maxPeople < 5;
+    }
+    else if(value == "5-10"){
+        return maxPeople >= 5 && maxPeople < 10;
+    }
+    else if(value == "10-15"){
+        return maxPeople >= 10 && maxPeople < 15;
+    }
+    else{
+        return maxPeople >= 15;
     }
 }
 
@@ -389,3 +422,4 @@ async function verifyLogIn(email, pass) {
     });
     
 }
+

@@ -18,6 +18,7 @@ function userCreateEvent() {
     var eventName = document.getElementById("inputEventName").value;
     if(eventName.length == 0) {
         alert("Please enter Event Name");
+        return;
     } else {
         newTitle = document.getElementById("inputEventName").value;
     }
@@ -27,6 +28,7 @@ function userCreateEvent() {
     var eventType = document.getElementById("inputEventType").value;
     if(eventType.length == 0) {
         alert("Please enter Event Type");
+        return;
     } else {
         newType = document.getElementById("inputEventType").value;
     }
@@ -37,6 +39,7 @@ function userCreateEvent() {
     var placeHolder = "Add a short description of your event....";
     if(eventDescription == placeHolder) {
         alert("Please enter Event Description");
+        return;
     } else {
         newDescription = document.getElementById("inputEventDes").value;
     }
@@ -46,6 +49,7 @@ function userCreateEvent() {
     var location = document.getElementById("inputEventAddress").value;
     if(location.length == 0) {
         alert("Please enter Event Location");
+        return;
     } else {
         newLocation = document.getElementById("inputEventAddress").value;
     }
@@ -56,6 +60,7 @@ function userCreateEvent() {
     console.log(eventDate);
     if(eventDate.length == 0) {
         alert("Please enter Event Date");
+        return;
     } else {
         newDate = document.getElementById("inputEventDate").value.substr(5,10);
     }
@@ -65,6 +70,7 @@ function userCreateEvent() {
     var eventStartTime = document.getElementById("inputEventStartTime").value;
     if(eventStartTime.length == 0) {
         alert("Please enter Event Start Time");
+        return;
     } 
     else {
         startTime = document.getElementById("inputEventStartTime").value;
@@ -75,6 +81,7 @@ function userCreateEvent() {
     var eventEndTime = document.getElementById("inputEventEndTime").value;
     if(eventEndTime.length == 0) {
         alert("Please enter Event End Time");
+        return;
     } 
     else {
         endTime = document.getElementById("inputEventEndTime").value;
@@ -87,6 +94,7 @@ function userCreateEvent() {
     var eventMaxPpl = document.getElementById("inputEventMaxPpl").value;
     if(eventMaxPpl.length == 0) {
         alert("Please enter Max People");
+        return;
     } else {
         newCapacity = document.getElementById("inputEventMaxPpl").value;
     }
