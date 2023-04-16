@@ -117,3 +117,9 @@ function joinEvent() {
         console.log("Invalid Join button state");
     }
 }
+
+function navToLogIn() {
+    sessionStorage.setItem("isLoggedIn", false);
+    sessionStorage.setItem("username", "");
+    window.location.href = "logIn.html";
+}
